@@ -29,19 +29,31 @@ scene.add(light)
 const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5)
 scene.add(directionalLight)
 
-// Cube
+// Cubes
 //***********************************************************************
-const geometry = new THREE.BoxGeometry(1, 1, 1)
+const geometry = new THREE.BoxGeometry(2, 2, 2)
 const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 })
 const cube = new THREE.Mesh(geometry, material)
+cube.position.x = -5
 scene.add(cube)
+
+const cube2 = new THREE.Mesh(geometry, material)
+cube2.position.x = 12
+cube2.position.z = -10
+scene.add(cube2)
+
+const cube3 = new THREE.Mesh(geometry, material)
+cube3.position.x = 25
+cube3.position.z = -6
+scene.add(cube3)
 
 // Ball character
 //***********************************************************************
-const ballGeometry = new THREE.SphereGeometry()
+const ballGeometry = new THREE.SphereGeometry(1, 32, 32)
 const ballMaterial = new THREE.MeshBasicMaterial({ color: 0xfffff0 })
 const sphere = new THREE.Mesh(ballGeometry, ballMaterial)
 sphere.position.set(4, 0, 1)
+sphere.add(camera) //Asi lo sigue la camara
 scene.add(sphere)
 
 // Floor
@@ -77,21 +89,22 @@ function onKeyUp(event) {
 
 // En vez de usar eventlistener suelto, al meter update() dentro del animate(), hace la animación más fluida y sin delay al keyPress
 function update() {
+  const moveStep = 0.15
   if (isKeyPressed) {
     if (keyboardEvent.keyCode === 37) {
-      sphere.position.x -= 0.1
+      sphere.position.x -= moveStep
     }
     if (keyboardEvent.keyCode === 38) {
-      sphere.position.z -= 0.1
+      sphere.position.z -= moveStep
     }
     if (keyboardEvent.keyCode === 39) {
-      sphere.position.x += 0.1
+      sphere.position.x += moveStep
     }
     if (keyboardEvent.keyCode === 40) {
-      sphere.position.z += 0.1
+      sphere.position.z += moveStep
     }
     if (keyboardEvent.keyCode === 32) {
-      sphere.position.y += 0.1
+      sphere.position.y += moveStep
     }
   }
 }
