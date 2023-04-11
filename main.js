@@ -56,12 +56,55 @@ floorMesh.rotation.x = Math.PI / 2
 floorMesh.position.y = -5
 scene.add(floorMesh)
 
+// Moving the character
+// Left: 37, Up: 38, Right: 39, Down: 40, Space: 32
+//***********************************************************************
+let keyboardEvent
+let isKeyPressed = false
+
+window.addEventListener("keydown", onKeyDown, false)
+window.addEventListener("keyup", onKeyUp, false)
+
+function onKeyDown(event) {
+  keyboardEvent = event
+  isKeyPressed = true
+}
+
+function onKeyUp(event) {
+  keyboardEvent = event
+  isKeyPressed = false
+}
+
+// En vez de usar eventlistener suelto, al meter update() dentro del animate(), hace la animación más fluida y sin delay al keyPress
+function update() {
+  if (isKeyPressed) {
+    if (keyboardEvent.keyCode === 37) {
+      sphere.position.x -= 0.1
+    }
+    if (keyboardEvent.keyCode === 38) {
+      sphere.position.z -= 0.1
+    }
+    if (keyboardEvent.keyCode === 39) {
+      sphere.position.x += 0.1
+    }
+    if (keyboardEvent.keyCode === 40) {
+      sphere.position.z += 0.1
+    }
+    if (keyboardEvent.keyCode === 32) {
+      sphere.position.y += 0.1
+    }
+  }
+}
+
 // Rendering the scene
 //***********************************************************************
 function animate() {
   requestAnimationFrame(animate)
   cube.rotation.x += 0.01
   cube.rotation.y += 0.01
+
   renderer.render(scene, camera)
+
+  update()
 }
 animate()
