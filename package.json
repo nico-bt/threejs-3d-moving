@@ -1,0 +1,17 @@
+{
+  "name": "02-threejs-3d-moving",
+  "version": "1.0.0",
+  "description": "3d game ball",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "nico battaglia",
+  "license": "ISC",
+  "dependencies": {
+    "three": "^0.151.3"
+  },
+  "devDependencies": {
+    "vite": "^4.2.1"
+  }
+}
