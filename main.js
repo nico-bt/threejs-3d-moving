@@ -79,10 +79,12 @@ scene.add(torus)
 
 // Ball character
 //***********************************************************************
+const ballTexture = new THREE.TextureLoader().load("saitamaFace.png")
 const ballGeometry = new THREE.SphereGeometry(1, 16, 16)
 const ballMaterial = new THREE.MeshStandardMaterial({
-  color: 0xffffff,
+  // color: 0xffffff,
   // wireframe: true,
+  map: ballTexture,
 })
 const sphere = new THREE.Mesh(ballGeometry, ballMaterial)
 sphere.position.set(4, 0, 1)
@@ -116,6 +118,67 @@ const moon = new THREE.Mesh(
 moon.position.set(20, 14, -25)
 scene.add(moon)
 
+// Loading models
+//***********************************************************************
+const loader = new GLTFLoader()
+
+loader.load(
+  "public/Range Rover.glb",
+  function (gltf) {
+    gltf.scene.position.set(8, 1.6, -20)
+    gltf.scene.scale.set(2, 2, 2)
+    scene.add(gltf.scene)
+  },
+  undefined,
+  function (error) {
+    console.error(error)
+  }
+)
+
+loader.load(
+  "star_wars_tieag_aggressor.glb",
+  function (gltf) {
+    gltf.scene.position.set(8, 30, -50)
+    gltf.scene.scale.set(3, 3, 3)
+    gltf.scene.rotation.x = 0.5
+    gltf.scene.rotation.y = -0.25
+    scene.add(gltf.scene)
+  },
+  undefined,
+  function (error) {
+    console.error(error)
+  }
+)
+
+loader.load(
+  "halo.glb",
+  function (gltf) {
+    gltf.scene.position.set(2, -1.1, -24)
+    gltf.scene.scale.set(2, 2, 2)
+    gltf.scene.rotation.y = -0.4
+    scene.add(gltf.scene)
+  },
+  undefined,
+  function (error) {
+    console.error(error)
+  }
+)
+
+loader.load(
+  "robot.glb",
+  function (gltf) {
+    gltf.scene.position.set(40, -1, -24)
+    gltf.scene.scale.set(8, 8, 8)
+    gltf.scene.rotation.y = -1
+    // gltf.scene.rotation.z = 0.25
+    scene.add(gltf.scene)
+  },
+  undefined,
+  function (error) {
+    console.error(error)
+  }
+)
+
 // Moving the character
 // Left: 37, Up: 38, Right: 39, Down: 40, Space: 32, z:90, x:88
 //***********************************************************************
@@ -141,7 +204,7 @@ function update() {
   if (isKeyPressed) {
     if (keyboardEvent.keyCode === 37) {
       // sphere.position.x -= moveStep
-      sphere.rotation.y += 0.01
+      sphere.rotation.y += 0.05
     }
     if (keyboardEvent.keyCode === 38) {
       // sphere.position.z -= moveStep
@@ -149,7 +212,7 @@ function update() {
     }
     if (keyboardEvent.keyCode === 39) {
       // sphere.position.x += moveStep
-      sphere.rotation.y -= 0.01
+      sphere.rotation.y -= 0.05
     }
     if (keyboardEvent.keyCode === 40) {
       // sphere.position.z += moveStep
@@ -183,3 +246,14 @@ function animate() {
   update()
 }
 animate()
+
+// Window resize
+//***********************************************************************
+window.addEventListener("resize", onWindowResize, false)
+
+function onWindowResize() {
+  camera.aspect = window.innerWidth / window.innerHeight
+  camera.updateProjectionMatrix()
+
+  renderer.setSize(window.innerWidth, window.innerHeight)
+}
