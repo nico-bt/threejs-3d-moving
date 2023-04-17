@@ -34,8 +34,8 @@ scene.add(light)
 
 // // White directional light.
 const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5)
-directionalLight.position.x = -10
-directionalLight.position.y = 50
+// directionalLight.position.x = 1
+directionalLight.position.y = 2
 directionalLight.position.z = 2
 scene.add(directionalLight)
 
@@ -49,18 +49,18 @@ scene.add(pointLight)
 const geometry = new THREE.BoxGeometry(2, 2, 2)
 const material = new THREE.MeshStandardMaterial({ color: 0x00ff00 })
 const cube = new THREE.Mesh(geometry, material)
-cube.position.x = -5
+cube.position.x = -6
 cube.position.y = 1
 scene.add(cube)
 
 const cube2 = new THREE.Mesh(geometry, material)
-cube2.position.x = 12
-cube2.position.z = -10
+cube2.position.x = -20
+cube2.position.z = -15
 scene.add(cube2)
 
 const cube3 = new THREE.Mesh(geometry, material)
-cube3.position.x = 25
-cube3.position.z = -6
+cube3.position.x = -25
+cube3.position.z = -4
 scene.add(cube3)
 
 const geometryRect = new THREE.BoxGeometry(20, 2, 4)

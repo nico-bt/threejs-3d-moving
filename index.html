@@ -7,7 +7,26 @@
     <link rel="stylesheet" href="style.css" />
     <title>3D Ball</title>
   </head>
+
   <body>
+    <div class="container">
+      <div class="overlay">
+        <h1>Controls</h1>
+        <ul>
+          <li>Arrow keys to move</li>
+          <li>Z: fly up</li>
+          <li>X: fly down</li>
+          <li>Space bar: back to floor level</li>
+        </ul>
+        <button class="ok-btn">Ok</button>
+      </div>
+    </div>
+
     <script type="module" src="/main.js"></script>
+    <script>
+      const btn = document.querySelector(".ok-btn")
+      const container = document.querySelector(".container")
+      btn.addEventListener("click", () => (container.style.display = "none"))
+    </script>
   </body>
 </html>
