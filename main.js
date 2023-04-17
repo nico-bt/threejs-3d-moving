@@ -123,7 +123,7 @@ scene.add(moon)
 const loader = new GLTFLoader()
 
 loader.load(
-  "public/Range Rover.glb",
+  "RangeRover.glb",
   function (gltf) {
     gltf.scene.position.set(15, 1.6, -40)
     gltf.scene.rotation.y = -0.25
