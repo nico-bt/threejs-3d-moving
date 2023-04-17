@@ -125,7 +125,8 @@ const loader = new GLTFLoader()
 loader.load(
   "public/Range Rover.glb",
   function (gltf) {
-    gltf.scene.position.set(8, 1.6, -20)
+    gltf.scene.position.set(15, 1.6, -40)
+    gltf.scene.rotation.y = -0.25
     gltf.scene.scale.set(2, 2, 2)
     scene.add(gltf.scene)
   },
@@ -151,11 +152,11 @@ loader.load(
 )
 
 loader.load(
-  "halo.glb",
+  "b1_battle_droid.glb",
   function (gltf) {
-    gltf.scene.position.set(2, -1.1, -24)
+    gltf.scene.position.set(-2, -0.8, -10)
     gltf.scene.scale.set(2, 2, 2)
-    gltf.scene.rotation.y = -0.4
+    gltf.scene.rotation.y = 0.4
     scene.add(gltf.scene)
   },
   undefined,
