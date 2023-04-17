@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>3D Ball</title>
+    <script type="module" crossorigin src="/threejs-3d-moving/assets/index-d2b5927a.js"></script>
+    <link rel="stylesheet" href="/threejs-3d-moving/assets/index-c9c5ee3c.css">
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="overlay">
+        <h1>Controls</h1>
+        <ul>
+          <li>Arrow keys to move</li>
+          <li>Z: fly up</li>
+          <li>X: fly down</li>
+          <li>Space bar: back to floor level</li>
+        </ul>
+        <button class="ok-btn">Ok</button>
+      </div>
+    </div>
+
+    
+    <script>
+      const btn = document.querySelector(".ok-btn")
+      const container = document.querySelector(".container")
+      btn.addEventListener("click", () => (container.style.display = "none"))
+    </script>
+  </body>
+</html>
