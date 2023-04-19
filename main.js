@@ -255,6 +255,8 @@ function animate() {
   cube.rotation.x += 0.01
   cube.rotation.y += 0.01
 
+  moon.rotation.y += 0.005
+
   torus.rotation.x += 0.005
   torus.rotation.y += 0.0005
   torus.rotation.z += 0.005
