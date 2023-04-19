@@ -47,27 +47,31 @@ scene.add(pointLight)
 // Cubes
 //***********************************************************************
 const geometry = new THREE.BoxGeometry(2, 2, 2)
-const material = new THREE.MeshStandardMaterial({ color: 0x00ff00 })
+const metalTexture = new THREE.TextureLoader().load("metal-texture.jpg")
+const material = new THREE.MeshStandardMaterial({
+  color: 0xaaa9ad,
+  map: metalTexture,
+})
 const cube = new THREE.Mesh(geometry, material)
 cube.position.x = -6
 cube.position.y = 1
 scene.add(cube)
 
-const cube2 = new THREE.Mesh(geometry, material)
-cube2.position.x = -20
-cube2.position.z = -15
-scene.add(cube2)
+// const cube2 = new THREE.Mesh(geometry, material)
+// cube2.position.x = -20
+// cube2.position.z = -15
+// scene.add(cube2)
 
-const cube3 = new THREE.Mesh(geometry, material)
-cube3.position.x = -25
-cube3.position.z = -4
+const geometry2 = new THREE.BoxGeometry(6, 6, 6)
+const cube3 = new THREE.Mesh(geometry2, material)
+cube3.position.set(-25, 2, -4)
 scene.add(cube3)
 
-const geometryRect = new THREE.BoxGeometry(20, 2, 4)
-const rectangle = new THREE.Mesh(geometryRect, material)
-rectangle.position.x = -25
-rectangle.position.z = -40
-scene.add(rectangle)
+// const geometryRect = new THREE.BoxGeometry(20, 2, 4)
+// const rectangle = new THREE.Mesh(geometryRect, material)
+// rectangle.position.x = -25
+// rectangle.position.z = -40
+// scene.add(rectangle)
 
 // Torus
 //***********************************************************************
@@ -139,10 +143,9 @@ loader.load(
 loader.load(
   "star_wars_tieag_aggressor.glb",
   function (gltf) {
-    gltf.scene.position.set(8, 30, -50)
-    gltf.scene.scale.set(3, 3, 3)
+    gltf.scene.position.set(4, 30, -80)
+    gltf.scene.scale.set(8, 8, 8)
     gltf.scene.rotation.x = 0.5
-    gltf.scene.rotation.y = -0.25
     scene.add(gltf.scene)
   },
   undefined,
@@ -172,6 +175,20 @@ loader.load(
     gltf.scene.scale.set(8, 8, 8)
     gltf.scene.rotation.y = -1
     // gltf.scene.rotation.z = 0.25
+    scene.add(gltf.scene)
+  },
+  undefined,
+  function (error) {
+    console.error(error)
+  }
+)
+
+loader.load(
+  "low_rise_wall_to_wall_office_building.glb",
+  function (gltf) {
+    gltf.scene.scale.set(0.025, 0.025, 0.025)
+    gltf.scene.position.set(-10, -0.85, 86)
+    gltf.scene.rotation.y = Math.PI
     scene.add(gltf.scene)
   },
   undefined,
